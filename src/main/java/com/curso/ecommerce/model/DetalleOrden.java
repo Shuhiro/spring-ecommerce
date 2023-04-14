@@ -1,13 +1,18 @@
 package com.curso.ecommerce.model;
 
+import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+@Entity
+@Table(name = "detalles")
 @ToString @EqualsAndHashCode
 public class DetalleOrden {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter @Setter
     private Integer id;
 
@@ -22,6 +27,14 @@ public class DetalleOrden {
 
     @Getter @Setter
     private double total;
+
+    @OneToOne
+    @Getter @Setter
+    private Orden orden;
+
+    @ManyToOne
+    @Getter @Setter
+    private Producto producto;
 
     public DetalleOrden(){
     }
