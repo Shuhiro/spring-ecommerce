@@ -8,7 +8,7 @@ import lombok.ToString;
 
 @Entity
 @Table(name = "productos")
-@ToString @EqualsAndHashCode
+@EqualsAndHashCode
 public class Producto {
 
     @Id
@@ -37,7 +37,6 @@ public class Producto {
 
     public Producto() {
     }
-
     public Producto(Integer id, String nombre, String descripcion, String imagen, double precio, int cantidad, Usuario usuario) {
         this.id = id;
         this.nombre = nombre;
@@ -46,5 +45,17 @@ public class Producto {
         this.precio = precio;
         this.cantidad = cantidad;
         this.usuario = usuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Producto{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", descripcion='" + descripcion + '\'' +
+                ", imagen='" + imagen + '\'' +
+                ", precio=" + precio +
+                ", cantidad=" + cantidad +
+                '}';
     }
 }
